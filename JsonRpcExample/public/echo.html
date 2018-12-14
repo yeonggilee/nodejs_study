@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RPC - Echo</title>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="jquery.jsonrpc.js"></script>
+		<script>
+			$(function(){
+				$.jsonRPC.setup({
+					endPoint:'http://localhost:3000/api',
+					namespace:''
+				});
+				$('#requestButton').bind('click', function(){
+					var data=$('#dataInput').val();
+					
+					var method='echo';
+					$.jsonRPC.request(
+						method,
+						{
+							id:1001,
+							params:[data],
+							success:function(input){
+								println('응답 받음 -> '+JSON.stringify(input));
+							},
+							error:function(err){
+								println('에러 받음 -> '+JSON.stringify(err));
+							}
+						}
+					);
+					println('['+method+'] 함수를 호출하도록 요청함');
+				});
+			});
+			function println(data){
+				$('#results').append('<p>'+data+'</p>');
+			}
+		</script>
+	</head>
+	<body>
+		<h3>RPC - Echo</h3>
+		<br>
+		<textarea name="dataInput" id="dataInput"></textarea>
+		<br>
+		<input type="button" name="requestButton" id="requestButton" value="요청">
+		<br>
+		<p>결과</p>
+		<div id="results"></div>
+	</body>
+</html>

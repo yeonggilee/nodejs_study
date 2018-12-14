@@ -1,0 +1,8 @@
+mongod --dbpath /Users/yeonggi/Desktop/nodejs_study/database/local
+
+mongo
+> use local
+> db.users.insert({"id":"test01", name:'¼Ò³à½Ã´ë', "password":"123456"})
+
+> db.users.remove({name:/¼Ò³à/})
+> db.users.find().pretty()

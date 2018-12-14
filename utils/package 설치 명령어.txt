@@ -1,0 +1,3 @@
+npm init -> package.json 积己
+npm install -> package_lock.json 积己
+npm install nconf --save -> package_lock.json 函版
