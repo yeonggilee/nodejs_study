@@ -1,4 +1,4 @@
-mongod --dbpath /Users/yeonggi/Desktop/nodejs_study/database/local
+mongod --dbpath /Users/yeonggi/Desktop/database/local
 
 mongo
 > use local
